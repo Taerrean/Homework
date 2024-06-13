@@ -1,6 +1,6 @@
-num1 = 5
-num2 = 3
-sum = num1 + num2
-print(sum)
-result = sum + num1 * num2
-print(result)
+example = 'Террариум' # Код работает для всех строк с >= двумя символами
+print(example[0])
+print(example[-1])
+print(example[len(example)//2:])
+print(example[::-1])
+print(example[1::2])
