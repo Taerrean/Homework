@@ -1,8 +1,5 @@
-name = 'Андрей'
-print('Name: ', name )
-age = 15
-print('Age:', age)
-age += 1
-print('New age:', age)
-is_student = True
-print('Is student:', is_student)
+Tasks_completed = 12
+Hours_spent = 1.5
+Course_name = 'Python'
+Average_time = Hours_spent/Tasks_completed
+print('Курс: ',Course_name,', всего задач: ',Tasks_completed,', затрачено часов: ', Hours_spent,', среднее время выполнения: ', Average_time,'.')
