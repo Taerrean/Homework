@@ -3,6 +3,6 @@ students = {'Johnny', 'Bilbo', 'Steve', 'Khendrik', 'Aaron'}
 average = dict()
 students = list(students)
 sorted(students)
-for i in range(5):
+for i in range(len(students)):
     average[students[i]] = sum(grades[i])/len(grades[i])
 print(average)
