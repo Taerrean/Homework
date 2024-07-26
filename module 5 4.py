@@ -3,6 +3,7 @@ class House:
 
     def __new__(cls, *args):
         cls.houses_history.append(args[0])
+        return object.__new__(cls)
 
     def __init__(self, name, number_of_floors):
         self.name = name
@@ -89,7 +90,6 @@ class House:
         if isinstance(value, int):
             self.number_of_floors -= value
             return self
-
     def __del__(self):
         print(f'{self.name} снесён, но он останется в истории')
 
