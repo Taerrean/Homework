@@ -1,5 +1,5 @@
 import multiprocessing
-import datetime as time
+import time
 def read_info(name):
     all_data = []
     with open(name, 'r', encoding = 'utf-8') as file:
@@ -7,15 +7,17 @@ def read_info(name):
         while line is not None:
             line = file.readline()
             all_data.append(line)
-    return end - start
+    return all_data
 filenames = [f'./texts/file {file}.txt' for file in range(1, 5)]
-#start = time.datetime.now()
+#start = time.time()
 #if __name__ == '__main__':
 #    with multiprocessing.Pool(processes = 4) as pool:
 #        a = map(read_info, filenames)
-#end = time.datetime.now()
+#end = time.time()
 #print(f'Времени затрачено: {end - start}')
-start = time.datetime.now() #Почему 0?
+start = time.time() #Почему 0?
 b = map(read_info, filenames)
-end = time.datetime.now()
+for i in b:
+    pass
+end = time.time()
 print(f'Времени затрачено: {end - start}')
