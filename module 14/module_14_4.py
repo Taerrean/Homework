@@ -68,7 +68,7 @@ async def menu(message):
 @dp.message_handler(text = 'Купить')
 async def get_selection(message):
     for i in range(len(products)):
-        await message.answer(f'Название: {products[i][1]} | Описание: Описание {products[i][2]} | Цена: {products[i][3] * 100}\n')
+        await message.answer(f'Название: {products[i][1]} | Описание: Описание {products[i][2]} | Цена: {products[i][3]}\n')
         with open(f'pics/img{i + 1}.png', 'rb') as img:
             await message.answer_photo(img)
     await message.answer('Выберите продукт:', reply_markup = buy_menu)
