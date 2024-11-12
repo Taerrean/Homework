@@ -77,10 +77,7 @@ async def sign_up(message):
     await RegistrationState.username.set()
 @dp.message_handler(state = RegistrationState.username)
 async def username_stage(message, state):
-    connection = sqlite3.connect('not_telegram.db')
-    cursor = connection.cursor()
-    check_user = cursor.execute("SELECT * FROM Users WHERE username = ?", (message.text,))
-    if check_user.fetchone() is None:
+    if not is_included(message.text):
         await state.update_data(username = message.text)
         await message.answer('Введите ваш почтовый адрес:')
         await RegistrationState.email.set()

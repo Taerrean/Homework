@@ -44,5 +44,15 @@ def get_all_products(table_name):
     products = cursor.fetchall()
     connection.close()
     return products
+def is_included(username):
+    connection = sqlite3.connect('not_telegram.db')
+    cursor = connection.cursor()
+    check_user = cursor.execute("SELECT * FROM Users WHERE username = ?", (username,))
+    if check_user.fetchone() is None:
+        connection.close()
+        return False
+    else:
+        connection.close()
+        return True
 connection.commit()
 connection.close()
