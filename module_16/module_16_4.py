@@ -31,6 +31,13 @@ async def add_user(user: CreateUser):
     users.append(newuser)
     return newuser
 
+@app.delete('/user/{uid}')
+async def del_user(uid: int):
+    for u in users:
+        if u.id == uid:
+            return users.pop(uid)
+    raise HTTPException(status_code=404, detail = 'User not found.')
+
 
 @app.put('/user/{uid}/{username}/{age}')
 async def update_params(uid:int, user:CreateUser):
@@ -40,14 +47,6 @@ async def update_params(uid:int, user:CreateUser):
             users.append(newuser)
             return newuser
     raise HTTPException(status_code = 404, detail = 'User not found.')
-
-
-@app.delete('/user/{uid}')
-async def del_user(uid: int):
-    for u in users:
-        if u.id == uid:
-            return users.pop(uid)
-    raise HTTPException(status_code=404, detail = 'User not found.')
 
 
 @app.get('/')
