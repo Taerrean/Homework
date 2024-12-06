@@ -31,7 +31,7 @@ async def create_user(db: Annotated[Session, Depends(get_db)], user: CreateUser)
                                    first_name=user.first_name,
                                    last_name=user.last_name,
                                    age=user.age,
-                                   slug=slugify(create_user.username)))
+                                   slug=slugify(user.username)))
     db.commit()
     return {
         'status_code': status.HTTP_201_CREATED,
@@ -49,7 +49,7 @@ async def update_user(user_id: int, upduser: CreateUser, db: Annotated[Session, 
         first_name=upduser.first_name,
         last_name=upduser.last_name,
         age=upduser.age,
-        slug=slugify(update_user.username)
+        slug=slugify(upduser.username)
     ))
     db.commit()
     return {
