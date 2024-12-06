@@ -14,6 +14,8 @@ router = APIRouter(prefix='/user', tags=['user'])
 @router.get('/all')
 async def all_users(db: Annotated[Session, Depends(get_db)]):
     users = db.scalars(select(User).where(User.is_active == True)).all()
+    if users is None:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail='No user found.')
     return users
 
 
@@ -22,8 +24,7 @@ async def this_user(user_id: int, db: Annotated[Session, Depends(get_db)]):
     target = db.scalars(select(User).where(User.uid == user_id)).all()
     if target is None:
         raise HTTPException(status_code=404, detail='User not found.')
-    else:
-        return target
+    return target
 
 @router.post('/create')
 async def create_user(db: Annotated[Session, Depends(get_db)], user: CreateUser):
